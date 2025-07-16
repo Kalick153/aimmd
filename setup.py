@@ -17,7 +17,7 @@ along with AIMMD. If not, see <https://www.gnu.org/licenses/>.
 import sys
 import numpy
 # always prefer setuptools over distutils!
-from setuptools import setup
+from setuptools import setup, find_packages 
 from setuptools.extension import Extension
 from Cython.Build import cythonize
 
@@ -49,5 +49,6 @@ else:
 
 # run the setup
 setup(
+    packages=find_packages(),
     ext_modules=cythonize(CY_EXTS),
 )
