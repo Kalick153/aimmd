@@ -401,7 +401,7 @@ def find_proximal_indices_for_snapshot(traj_snapshot, radius_nm, ion_selection_s
     Returns:
         np.ndarray: An array of atom indices to keep (ions + all atoms of proximal water molecules).
     """
-    traj_snapshot = traj_snapshot.md # amen
+    traj_snapshot = traj_snapshot # amen
     ion_indices = traj_snapshot.topology.select(' or '.join(ion_selection_strings))
     nearby_waters = mdt.compute_neighbors(traj_snapshot, radius_nm, ion_indices,
                                           haystack_indices=traj_snapshot.topology.select("water and name O"))
