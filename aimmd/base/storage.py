@@ -864,13 +864,13 @@ class Storage:
         self._dirname = os.path.dirname(os.path.abspath(os.path.join(os.getcwd(), fname)))
         if ("w" in mode) or ("a" in mode and not fexists):
             # first creation of file: write aimmd compatibility version string
-            self._store.attrs["storage_version"] = np.string_(
+            self._store.attrs["storage_version"] = np.bytes_(
                                                     self._compatibility_version
                                                               )
-            self._store.attrs["aimmd_version"] = np.string_(__version__)
+            self._store.attrs["aimmd_version"] = np.bytes_(__version__)
             # save the current (i.e. where the file is when we opened it) dirname to attrs
             # we need this to be able to save tensorflow models properly
-            self._store.attrs["dirname"] = np.string_(self._dirname)
+            self._store.attrs["dirname"] = np.bytes_(self._dirname)
         else:
             store_version = parse_version(
                             self._store.attrs["storage_version"].decode("ASCII")
