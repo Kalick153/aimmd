@@ -69,7 +69,7 @@ def mdtraj_to_graph_tensors(traj, cutoff_radius=0.5, atom_indices_to_keep=None):
     Optionally, it can operate on a subset of atoms.
     """
     # If a subset of atoms is provided, slice the trajectory first
-    traj = traj.md
+    traj = traj
     if atom_indices_to_keep is not None:
         traj = traj.atom_slice(atom_indices_to_keep)
 
@@ -372,7 +372,7 @@ def find_proximal_atom_indices(traj, proximity_cutoff_nm, ion_selection_strings)
     Returns:
         np.ndarray: An array of atom indices to keep (ions + all atoms of proximal water molecules).
     """
-    traj = traj.md
+    traj = traj
     logging.info(f"Finding atoms within {proximity_cutoff_nm} nm of ions...")
 
     ion_indices = traj.topology.select(' or '.join(ion_selection_strings))
