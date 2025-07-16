@@ -101,16 +101,16 @@ def analyze_ops_mcstep(mcstep, descriptor_transform, states):
         # get and possibly transform descriptors
         # descriptors is a 1d-array, since we use a snap and no traj in CV
         descriptors = descriptor_transform(shooting_snap)
-        if not np.all(np.isfinite(descriptors)):
-            logger.warning('There are NaNs or infinities in the training '
-                           + 'descriptors. \n We used numpy.nan_to_num() '
-                           + 'to proceed. You might still want to have '
-                           + '(and should have) a look @ \n'
-                           + 'np.where(np.isinf(descriptors): '
-                           + str(np.where(np.isinf(descriptors)))
-                           + 'and np.where(np.isnan(descriptors): '
-                           + str(np.where(np.isnan(descriptors))))
-            descriptors = np.nan_to_num(descriptors)
+        # if not np.all(np.isfinite(descriptors)):
+        #     logger.warning('There are NaNs or infinities in the training '
+        #                    + 'descriptors. \n We used numpy.nan_to_num() '
+        #                    + 'to proceed. You might still want to have '
+        #                    + '(and should have) a look @ \n'
+        #                    + 'np.where(np.isinf(descriptors): '
+        #                    + str(np.where(np.isinf(descriptors)))
+        #                    + 'and np.where(np.isnan(descriptors): '
+        #                    + str(np.where(np.isnan(descriptors))))
+        #     descriptors = np.nan_to_num(descriptors)
 
         return descriptors, shot_results
 
